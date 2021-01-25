@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Menu } from '../_model/menu';
+import { Rol } from '../_model/rol';
 import { GenericService } from './generic.service';
 import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,15 +8,15 @@ import { BehaviorSubject, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class MenuService extends GenericService<Menu>{
+export class RolService extends GenericService<Rol>{
 
-  private menuCambio = new BehaviorSubject<Menu[]>([]);
-  private mensajeCambio = new Subject<string>();
+  private rolCambio = new BehaviorSubject<Rol[]>([]);
+  private mensajeCambio = new Subject<string>();  
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient) { 
     super(
       http,
-      `${environment.HOST}/menus`);
+      `${environment.HOST}/roles`);    
   }
 
   listarPageable(p: number, s:number){
@@ -26,17 +26,17 @@ export class MenuService extends GenericService<Menu>{
   listarPorUsuario(nombre: string) {
     let token = sessionStorage.getItem(environment.TOKEN_NAME);
 
-    return this.http.post<Menu[]>(`${this.url}/usuario`, nombre, {
+    return this.http.post<Rol[]>(`${this.url}/usuario`, nombre, {
       headers: new HttpHeaders().set('Authorization', `bearer ${token}`).set('Content-Type', 'application/json')
     });
   }
 
-  getMenuCambio() {
-    return this.menuCambio.asObservable();
+  getRolCambio() {
+    return this.rolCambio.asObservable();
   }
 
-  setMenuCambio(menus: Menu[]) {    
-    this.menuCambio.next(menus);
+  setRolCambio(roles: Rol[]) {    
+    this.rolCambio.next(roles);
   }
 
   getMensajeCambio(){
@@ -46,5 +46,4 @@ export class MenuService extends GenericService<Menu>{
   setMensajeCambio(mensaje: string){
     return this.mensajeCambio.next(mensaje);
   }
- 
 }

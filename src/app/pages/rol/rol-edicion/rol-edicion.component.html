@@ -1,0 +1,23 @@
+<form class="example-container" [formGroup]="form" #frmRol="ngForm" (ngSubmit)="operar()">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width">            
+        <input matInput placeholder="Nombre" required formControlName="nombre">     
+        <small *ngIf="f.nombre.errors?.required && f.nombre.touched" class="invalido">Nombre es requerido</small>          
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmRol.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Aceptar</span>
+    </button>
+    <button mat-raised-button color="accent" routerLink='/rol' type="button">
+        <mat-icon>close</mat-icon>
+        <span>Cancelar</span>
+    </button>
+
+</form>

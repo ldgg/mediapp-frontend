@@ -12,6 +12,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { RecuperarComponent } from './pages/login/recuperar/recuperar.component';
 import { TokenComponent } from './pages/login/recuperar/token/token.component';
 import { MedicoComponent } from './pages/medico/medico.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { MenuEdicionComponent } from './pages/menu/menu-edicion/menu-edicion.component';
+import { RolComponent } from './pages/rol/rol.component';
+import { RolEdicionComponent } from './pages/rol/rol-edicion/rol-edicion.component';
 import { Not403Component } from './pages/not403/not403.component';
 import { Not404Component } from './pages/not404/not404.component';
 import { PacienteEdicionComponent } from './pages/paciente/paciente-edicion/paciente-edicion.component';
@@ -49,6 +53,16 @@ const routes: Routes = [
   { path: 'consulta-especial', component: ConsultaEspecialComponent, canActivate: [GuardService] },
   { path: 'buscar', component: BuscarComponent, canActivate: [GuardService] },
   { path: 'reporte', component: ReporteComponent, canActivate: [GuardService] },
+  { path: 'menu', component: MenuComponent, children: [
+      { path: 'nuevo', component: MenuEdicionComponent },
+      { path: 'edicion/:id', component: MenuEdicionComponent }
+    ], canActivate: [GuardService] 
+  },
+  { path: 'rol', component: RolComponent, children: [
+      { path: 'nuevo', component: RolEdicionComponent },
+      { path: 'edicion/:id', component: RolEdicionComponent }
+    ], canActivate: [GuardService] 
+  },
   { path: 'not-403', component: Not403Component },
   { path: 'not-404', component: Not404Component },
   { path: 'login', component: LoginComponent },
