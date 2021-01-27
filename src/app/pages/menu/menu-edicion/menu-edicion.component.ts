@@ -82,7 +82,7 @@ export class MenuEdicionComponent implements OnInit {
       });
     }
 
-    this.router.navigate(['menu']);
+    this.router.navigate(['menu-rol']);
 
   }  
 

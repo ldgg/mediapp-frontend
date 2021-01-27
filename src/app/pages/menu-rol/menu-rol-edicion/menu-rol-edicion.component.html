@@ -1,0 +1,58 @@
+<form class="example-container" [formGroup]="form" #frmMenu="ngForm" (ngSubmit)="operar()">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width">            
+        <input matInput placeholder="Nombre del Menu" required formControlName="nombre" readonly>     
+    </mat-form-field>    
+
+    <mat-form-field class="example-full-width">            
+        <mat-select placeholder="Selecciona Rol" [(value)]="idRolSeleccionado">
+            <mat-option *ngFor="let r of (roles$ | async)" [value]="r.idRol">
+                {{ r.nombre }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary"  type="button" (click)="agregarRol()">Agregar</button>
+
+    <table>
+        <tr>
+            <td>
+                <mat-list role="list">
+                    <div mat-subheader>Roles Actuales</div>
+                    <mat-list-item role="listitem" *ngFor="let r of rolesActuales; let i = index">
+                        {{r.nombre}}
+                    </mat-list-item>
+                </mat-list> 
+            </td>
+            <td>
+                <mat-list role="list">        
+                    <div mat-subheader>Roles Nuevos</div>
+                    <mat-list-item role="listitem" *ngFor="let r of rolesSeleccionados; let i = index">
+                        <span>{{r.nombre}}</span> 
+                        <span class="example-spacer"></span>
+                        <button mat-raised-button color="warn" type="button" (click)="removerRol(i)">Remover</button>
+                    </mat-list-item>
+                </mat-list>                
+            </td>
+        </tr>
+    </table>
+
+    <mat-toolbar>
+        <button mat-raised-button color="primary" type="submit" [disabled]="frmMenu.invalid">
+            <mat-icon>done</mat-icon>
+            <span>Aceptar</span>
+        </button>
+        <button mat-raised-button color="accent" routerLink='/menu-rol' type="button">
+            <mat-icon>close</mat-icon>
+            <span>Cancelar</span>
+        </button>
+    </mat-toolbar>
+
+</form>    
+

@@ -22,6 +22,10 @@ import { PacienteEdicionComponent } from './pages/paciente/paciente-edicion/paci
 import { PacienteComponent } from './pages/paciente/paciente.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
 import { GuardService } from './_service/guard.service';
+import { MenuRolComponent } from './pages/menu-rol/menu-rol.component';
+import { MenuRolEdicionComponent } from './pages/menu-rol/menu-rol-edicion/menu-rol-edicion.component';
+import { UsuarioRolComponent } from './pages/usuario-rol/usuario-rol.component';
+import { UsuarioRolEdicionComponent } from './pages/usuario-rol/usuario-rol-edicion/usuario-rol-edicion.component';
 
 const routes: Routes = [
   {
@@ -63,6 +67,14 @@ const routes: Routes = [
       { path: 'edicion/:id', component: RolEdicionComponent }
     ], canActivate: [GuardService] 
   },
+  { path: 'menu-rol', component: MenuRolComponent, children: [
+      { path: 'edicion/:id', component: MenuRolEdicionComponent }
+    ], canActivate: [GuardService]
+  },
+  { path: 'usuario-rol', component: UsuarioRolComponent, children: [
+    { path: 'edicion/:id', component: UsuarioRolEdicionComponent }
+  ], canActivate: [GuardService]
+},  
   { path: 'not-403', component: Not403Component },
   { path: 'not-404', component: Not404Component },
   { path: 'login', component: LoginComponent },

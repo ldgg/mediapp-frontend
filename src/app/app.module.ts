@@ -36,6 +36,10 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { MenuEdicionComponent } from './pages/menu/menu-edicion/menu-edicion.component';
 import { RolComponent } from './pages/rol/rol.component';
 import { RolEdicionComponent } from './pages/rol/rol-edicion/rol-edicion.component';
+import { MenuRolComponent } from './pages/menu-rol/menu-rol.component';
+import { MenuRolEdicionComponent } from './pages/menu-rol/menu-rol-edicion/menu-rol-edicion.component';
+import { UsuarioRolComponent } from './pages/usuario-rol/usuario-rol.component';
+import { UsuarioRolEdicionComponent } from './pages/usuario-rol/usuario-rol-edicion/usuario-rol-edicion.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem(environment.TOKEN_NAME);
@@ -66,7 +70,11 @@ export function tokenGetter() {
     MenuComponent,
     MenuEdicionComponent,
     RolComponent,
-    RolEdicionComponent
+    RolEdicionComponent,
+    MenuRolComponent,
+    MenuRolEdicionComponent,
+    UsuarioRolComponent,
+    UsuarioRolEdicionComponent
   ],
   //entryComponents:[ MedicoDialogoComponent ],
   imports: [

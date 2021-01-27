@@ -1,0 +1,25 @@
+<router-outlet></router-outlet>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+<ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Usuario </th>
+    <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+</ng-container>    
+
+<ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" [routerLink]="['edicion', element.idUsuario]" type="button">
+            <mat-icon>ballot</mat-icon>
+            <span>Asignar</span>
+        </button>
+    </td>
+    </ng-container>    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [length]="cantidad" (page)="mostrarMas($event)"></mat-paginator>

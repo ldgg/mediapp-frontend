@@ -4,6 +4,7 @@ import { GenericService } from './generic.service';
 import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { Rol } from '../_model/rol';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class MenuService extends GenericService<Menu>{
       headers: new HttpHeaders().set('Authorization', `bearer ${token}`).set('Content-Type', 'application/json')
     });
   }
+
+  // listarRoles(idMenu: number) {
+  //   return this.http.get<Rol[]>(`${this.url}/listarrol/${idMenu}`);
+  // }
 
   getMenuCambio() {
     return this.menuCambio.asObservable();

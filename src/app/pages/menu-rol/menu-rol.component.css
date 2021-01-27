@@ -1,0 +1,40 @@
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+table {
+    width: 100%;
+}
+    
+.mat-column-nombre {
+word-wrap: break-word !important;
+white-space: unset !important;
+flex: 0 0 25% !important;
+width: 25% !important;
+overflow-wrap: break-word;
+word-wrap: break-word;
+
+word-break: break-word;
+
+-ms-hyphens: auto;
+-moz-hyphens: auto;
+-webkit-hyphens: auto;
+hyphens: auto;
+}
+
+.mat-column-acciones {
+word-wrap: break-word !important;
+white-space: unset !important;
+flex: 0 0 8% !important;
+width: 8% !important;
+overflow-wrap: break-word;
+word-wrap: break-word;
+
+word-break: break-word;
+
+-ms-hyphens: auto;
+-moz-hyphens: auto;
+-webkit-hyphens: auto;
+hyphens: auto;
+}
