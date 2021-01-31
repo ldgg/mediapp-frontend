@@ -34,20 +34,24 @@
                 <mat-list role="list">        
                     <div mat-subheader>Roles Nuevos</div>
                     <mat-list-item role="listitem" *ngFor="let r of rolesSeleccionados; let i = index">
-                        {{r.nombre}} <button mat-raised-button color="warn" type="button" (click)="removerRol(i)">Remover</button>
+                        <span>{{r.nombre}}</span>
+                        <span class="example-spacer"></span>
+                        <button mat-raised-button color="warn" type="button" (click)="removerRol(i)">Remover</button>
                     </mat-list-item>
                 </mat-list>                
             </td>
         </tr>
     </table>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">
-        <mat-icon>done</mat-icon>
-        <span>Aceptar</span>
-    </button>
-    <button mat-raised-button color="accent" routerLink='/usuario-rol' type="button">
-        <mat-icon>close</mat-icon>
-        <span>Cancelar</span>
-    </button>
+    <mat-toolbar>
+        <button mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">
+            <mat-icon>done</mat-icon>
+            <span>Aceptar</span>
+        </button>
+        <button mat-raised-button color="accent" routerLink='/usuario-rol' type="button">
+            <mat-icon>close</mat-icon>
+            <span>Cancelar</span>
+        </button>
+    </mat-toolbar>
     
 </form>

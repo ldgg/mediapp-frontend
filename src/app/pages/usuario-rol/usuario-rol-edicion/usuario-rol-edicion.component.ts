@@ -54,15 +54,9 @@ export class UsuarioRolEdicionComponent implements OnInit {
     
     this.rolesSeleccionados = [];
     this.idRolSeleccionado = 0;
-//    this.listarRolesPorUsuario(this.id);
 
     this.usuarioService.listarPorId(this.id).subscribe(data => {
-      /*
-      this.usuario.idUsuario = data.idUsuario;
-      this.usuario.username = data.username;
-      this.usuario.password = data.password;
-      this.usuario.enabled = data.enabled;
-      */
+
       this.usuario = data;
       this.rolesActuales = data.roles;
 
@@ -86,7 +80,7 @@ export class UsuarioRolEdicionComponent implements OnInit {
       }))
       .subscribe(data => {
         this.usuarioService.setUsuarioCambio(data);
-        this.usuarioService.setMensajeCambio('SE AGREGO ROLES');
+        this.usuarioService.setMensajeCambio('SE ASIGNARON LOS ROLES');
       });
       
     this.router.navigate(['usuario-rol']);  

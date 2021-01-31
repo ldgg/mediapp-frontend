@@ -58,14 +58,9 @@ export class MenuRolEdicionComponent implements OnInit {
     
     this.rolesSeleccionados = [];
     this.idRolSeleccionado = 0;
-//    this.listarRolesPorMenu(this.id);
 
     this.menuService.listarPorId(this.id).subscribe(data => {
 
-      // this.menu.idMenu = data.idMenu;
-      // this.menu.nombre = data.nombre;
-      // this.menu.icono = data.icono;
-      // this.menu.url = data.url;
       this.menu = data;
       this.rolesActuales = data.roles;
 
@@ -83,17 +78,13 @@ export class MenuRolEdicionComponent implements OnInit {
   operar() {
     if (this.form.invalid) { return; }
 
-//    let menu = new Menu();
-//    menu.idMenu = this.form.value['id'];
-//    menu.roles = this.rolesSeleccionados;
-
       this.menu.roles = this.rolesSeleccionados;
       this.menuService.modificar(this.menu).pipe(switchMap(() => {
         return this.menuService.listar();
       }))
       .subscribe(data => {
         this.menuService.setMenuCambio(data);
-        this.menuService.setMensajeCambio('SE AGREGO ROLES');
+        this.menuService.setMensajeCambio('SE ASIGNARON LOS ROLES');
       });
       
     this.router.navigate(['menu-rol']);  
@@ -127,15 +118,5 @@ export class MenuRolEdicionComponent implements OnInit {
   removerRol(index: number) {
     this.rolesSeleccionados.splice(index, 1);
   }
-
-  // listarRolesPorMenu(idMenu: number) {
-  //   /*
-  //   this.rolService.listar().subscribe(data => {
-  //     this.rolesActuales = data;
-  //   });    */
-  //   this.menuService.listarRoles(idMenu).subscribe(data => {
-  //     this.rolesActuales = data;
-  //   })
-  // }
 
 }
